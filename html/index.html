@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><title>Fully Loaded Node: Synchronicity</title></head>
+<body>
+  XXX: write me
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script>
+  var socket = io.connect('/');
+  socket.on('state', function (data) {
+    console.log(data);
+  });
+</script>
+</html>

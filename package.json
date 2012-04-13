@@ -1,0 +1,13 @@
+{
+  "name": "fully_loaded_node",
+  "description": "Sample Applications for the Fully Loaded Node chat at http://node.ph",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "socket.io": "0.9.5",
+    "express": "2.5.9"
+  },
+  "devDependencies": {
+    "awsbox": "*"
+  }
+}
