@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head><title>Fully Loaded Node: Synchronicity</title></head>
+<head>
+  <title>Fully Loaded Node: Synchronicity</title>
+  <link rel="stylesheet" href="/style.css" type="text/css">
+  <link href='http://fonts.googleapis.com/css?family=Unkempt' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
+</head>
 <body>
-  XXX: write me
+  <div class="title">Fully Loaded Node: Synchronicity</div>
+  <div id="procsum">
+    # of cores: <span id="numcores"></span><br/>
+    load avg: <span id="loadavg"></span><br/>
+    usage: <span id="usage"></span>
+  </div>
+  <div id="processors">
+  </div>
 </body>
 <script src="/socket.io/socket.io.js"></script>
 <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-<script>
-  var socket = io.connect('/');
-  socket.on('state', function (data) {
-    console.log(data);
-  });
-</script>
+<script src="/fully_loaded.js"></script>
 </html>

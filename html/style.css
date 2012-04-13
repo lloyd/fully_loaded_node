@@ -1,0 +1,35 @@
+body {
+    background-color: #3f3f3f;
+    color: gainsboro;
+    font-family: Unkempt;
+    width: 900px;
+    margin: auto;
+}
+
+div.title {
+    text-align: center;
+    margin: .5em 0 1em 0;
+    font-size: 2em;
+}
+
+div#processors .proc {
+    font-family: PT Mono;
+    white-space: pre;
+    font-size: 10px;
+}
+
+div.proc span.ut { color: #7F9F7F; }
+div.proc span.st { color: #CC9393; }
+div.proc span.ni { color: #8CD0D3; }
+
+div#processors {
+    width: 570px;
+}
+
+div#procsum {
+    float: right;
+}
+
+div#procsum span {
+    font-family: PT Mono;
+}
