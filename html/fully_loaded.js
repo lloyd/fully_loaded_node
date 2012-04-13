@@ -1,5 +1,6 @@
 var socket = io.connect('/');
 socket.on('state', function (data) {
+  updateLatency(new Date());
   updateDisplay(data);
 });
 
@@ -30,4 +31,17 @@ function updateDisplay(state) {
   $("#usage").text(state.usage + "%");
   $("#processors").empty();
   state.cpus.forEach(addProc);
+}
+
+
+var lastMsg;
+var latency = 0;
+function updateLatency(t) {
+  if (lastMsg) {
+    var delay = 700 - (t - lastMsg);
+    if (delay < 0) delay = 0;
+    latency = Math.round((delay + (latency * 4)) / 5);
+  }
+  lastMsg = t;
+  $('#latency').text(latency + "ms");
 }

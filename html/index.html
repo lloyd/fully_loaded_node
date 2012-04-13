@@ -9,11 +9,23 @@
 <body>
   <div class="title">Fully Loaded Node: Synchronicity</div>
   <div id="procsum">
-    # of cores: <span id="numcores"></span><br/>
-    load avg: <span id="loadavg"></span><br/>
-    usage: <span id="usage"></span>
+    <span class="yellow"># of cores:</span> <span id="numcores"></span><br/>
+    <span class="yellow">load avg:</span> <span id="loadavg"></span><br/>
+    <span class="yellow">usage:</span> <span id="usage"></span>
   </div>
   <div id="processors">
+  </div>
+  <div id="metrics">
+    <table>
+      <tr><td id="latency"></td><td><i class="yellow">lag</i> - less is better</td></tr>
+      <tr><td id="throughput"></td><td><i class="yellow">throughput</i> - how many requests are handled simultaneously</td></tr>
+      <tr><td id="wait"></td><td><i class="yellow">wait time</i> - amount of time we wait for a response</td></tr>
+      <tr><td id="errors"></td><td><i class="yellow">error count</i> - errors are better than waiting forever</td></tr>
+    </table>
+  </div>
+  <div id="load_my_node">
+    (When you click this button, you'll generate API requests that are 10x more than the poor server can handle.)<br/>
+    <button> Load The Node! </button>
   </div>
 </body>
 <script src="/socket.io/socket.io.js"></script>

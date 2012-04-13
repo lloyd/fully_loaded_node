@@ -18,18 +18,53 @@ div#processors .proc {
     font-size: 10px;
 }
 
-div.proc span.ut { color: #7F9F7F; }
-div.proc span.st { color: #CC9393; }
-div.proc span.ni { color: #8CD0D3; }
+div.proc span.ut, .green { color: #7F9F7F; }
+div.proc span.st, .red { color: #CC9393; }
+div.proc span.ni, .blue { color: #8CD0D3; }
+div.proc span.cn, .yellow { color: #E3CEAB; }
+
 
 div#processors {
-    width: 570px;
+    width: 660px;
+    min-height: 100px;
 }
 
 div#procsum {
     float: right;
 }
 
-div#procsum span {
+div#procsum span:nth-child(2) {
     font-family: PT Mono;
+}
+
+#metrics {
+    text-align: left;
+}
+
+#metrics table {
+    margin: auto;
+}
+
+#load_my_node {
+    font-size: .8em;
+    text-align: center;
+    margin: 2em;
+}
+
+button {
+    border: 1px solid grey;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #7F9F7F;
+    color: #f9f9f9;
+    padding: .5em 1em;
+    margin: .5em;
+    font-weight: bold;
+    font-family: Unkempt;
+    font-size: 1.5em;
+}
+
+button:hover {
+    background-color: #white;
 }
