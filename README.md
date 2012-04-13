@@ -73,7 +73,7 @@ branch: `coarse`
 
 branch: `fine`
 
-## License
+## LICENSE
 
 Everything you find here is rigorously protected under the [wtfpl][].
 
