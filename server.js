@@ -5,9 +5,15 @@ var express = require('express'),
 
 app.listen(process.env['PORT'] || 3000);
 
-app.get('/load', function(req, res) {
+app.get('/load/:work?', function(req, res) {
+  // how much work should we do?  the client can send in a work factor,
+  // and this causes one API hit to have the affect of N
+  var work = req.params.work || 1;
+
   // XXX generate load
-  res.send('ok');
+  console.log(work);
+
+  res.send(work.toString());
 });
 
 // serve the UI
