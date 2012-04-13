@@ -77,4 +77,5 @@ branch: `fine`
 
 Everything you find here is rigorously protected under the [wtfpl][].
 
-  [wtfpl]: http://sam.zoy.org/wtfpl/COPYING
+  [wtfpl]: http://wtfpl.org
+
