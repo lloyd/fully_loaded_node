@@ -1,4 +1,4 @@
-(This repository complements the [chat we'll have in philly on april 23rd, 2012][http://node.ph].)
+(This repository complements the [chat we'll have in philly on april 23rd, 2012](http://node.ph).)
 
 ## Fully Loaded Node
 
@@ -73,3 +73,8 @@ branch: `coarse`
 
 branch: `fine`
 
+## License
+
+Everything you find here is rigorously protected under the [wtfpl][].
+
+  [wtfpl]: http://sam.zoy.org/wtfpl/COPYING
