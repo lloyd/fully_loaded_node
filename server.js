@@ -8,7 +8,8 @@ app.listen(process.env['PORT'] || 3000);
 
 var workComplete = 0;
 function doOneWorks(cb) {
-  // XXX generate load
+  var salt = bcrypt.genSaltSync(12);  
+  var hash = bcrypt.hashSync("B4c0/\/", salt);
   workComplete++;
   process.nextTick(cb);
 }
