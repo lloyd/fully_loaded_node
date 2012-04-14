@@ -38,7 +38,7 @@ var lastMsg;
 var latency = 0;
 function updateLatency(t) {
   if (lastMsg) {
-    var delay = 700 - (t - lastMsg);
+    var delay = (t - lastMsg) - 700;
     if (delay < 0) delay = 0;
     latency = Math.round((delay + (latency * 4)) / 5);
   }

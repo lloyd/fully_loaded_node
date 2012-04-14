@@ -21,7 +21,6 @@ app.get('/load/:work?', function(req, res) {
   var workDone = 0;
   for (var i = 0; i < work; i++) doOneWorks(function() {
     if (++workDone === work) res.send("okie dokie");
-    console.log(workDone, work);
   });
 });
 
@@ -41,11 +40,17 @@ io.sockets.on('connection', function (socket) {
 // every 700ms send down server state to all connected clients
 var last = os.cpus();
 const NUM_CPUS = last.length;
+var running = false;
+var ran = 0;
 setInterval(function() {
+  // don't run more frequently than once every 700ms
+  var now = new Date();
+  if (now - ran < 690) return;
+  ran = now;
+
   if (!clients.length) return;
 
   var cur = os.cpus();
-
   var o = {
     cpus: [], // per-cpu stats about usage
     usage: 0, // total % of avail compute in use
