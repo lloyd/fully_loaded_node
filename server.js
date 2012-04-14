@@ -6,20 +6,22 @@ var express = require('express'),
 
 app.listen(process.env['PORT'] || 3000);
 
-function doOneWorks() {
-  
+var workComplete = 0;
+function doOneWorks(cb) {
+  // XXX generate load
+  workComplete++;
+  process.nextTick(cb);
 }
 
 app.get('/load/:work?', function(req, res) {
   // how much work should we do?  the client can send in a work factor,
   // and this causes one API hit to have the affect of N
-  var work = req.params.work || 1;
-
-  
-  // XXX generate load
-  console.log(work);
-
-  res.send(work.toString());
+  var work = parseInt(req.params.work, 10) || 1;
+  var workDone = 0;
+  for (var i = 0; i < work; i++) doOneWorks(function() {
+    if (++workDone === work) res.send("okie dokie");
+    console.log(workDone, work);
+  });
 });
 
 // serve the UI

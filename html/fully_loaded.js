@@ -46,9 +46,14 @@ function updateLatency(t) {
   $('#latency').text(latency + "ms");
 }
 
+var requestTime = 0;
 function requestLoad(load) {
+  var startTime = new Date();
   $.get('/load/' + load, function(data, textStatus) {
-    console.log(textStatus);
+    var curReqTime = (new Date() - startTime) / load;
+    if (!requestTime) requestTime = curReqTime;
+    else requestTime = (requestTime * 9 + curReqTime) / 10;
+    $("#wait").text(requestTime.toFixed(0) + "ms");
     requestLoad(load);
   });
 }
