@@ -1,15 +1,21 @@
 var express = require('express'),
         app = express.createServer(),
          io = require('socket.io').listen(app),
-         os = require('os');
+         os = require('os'),
+     bcrypt = require('bcrypt');
 
 app.listen(process.env['PORT'] || 3000);
+
+function doOneWorks() {
+  
+}
 
 app.get('/load/:work?', function(req, res) {
   // how much work should we do?  the client can send in a work factor,
   // and this causes one API hit to have the affect of N
   var work = req.params.work || 1;
 
+  
   // XXX generate load
   console.log(work);
 

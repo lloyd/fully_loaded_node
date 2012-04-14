@@ -63,8 +63,17 @@ button {
     font-weight: bold;
     font-family: Unkempt;
     font-size: 1.5em;
+    opacity: .9;
 }
 
 button:hover {
-    background-color: #white;
+    opacity: 1;
+}
+
+button:active {
+    opacity: .6;
+}
+
+button[disabled] {
+    opacity: .2;
 }
