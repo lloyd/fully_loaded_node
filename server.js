@@ -42,19 +42,28 @@ var last = os.cpus();
 const NUM_CPUS = last.length;
 var running = false;
 var ran = 0;
+
+var throughput = 0.0;
 setInterval(function() {
+  if (!clients.length) return;
+
   // don't run more frequently than once every 700ms
   var now = new Date();
   if (now - ran < 690) return;
-  ran = now;
 
-  if (!clients.length) return;
+  // update throughput
+  throughput = ((throughput * 3 + 
+                 (workComplete / ((now - ran) / 1000))) / 4).toFixed(1);
+  workComplete = 0;
+
+  ran = now;
 
   var cur = os.cpus();
   var o = {
     cpus: [], // per-cpu stats about usage
     usage: 0, // total % of avail compute in use
-    load: os.loadavg().map(function(x) { return x.toFixed(3); }) // load averages
+    load: os.loadavg().map(function(x) { return x.toFixed(3); }), // load averages
+    throughput: throughput
   };
 
   // now let's massage the output of os.cpus() into something nicer to deal

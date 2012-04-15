@@ -29,6 +29,7 @@ function updateDisplay(state) {
   $("#numcores").text(state.cpus.length);
   $("#loadavg").text(state.load.join(" "));
   $("#usage").text(state.usage + "%");
+  $("#throughput").text(state.throughput + "rps");
   $("#processors").empty();
   state.cpus.forEach(addProc);
 }
@@ -49,6 +50,7 @@ function updateLatency(t) {
 var requestTime = 0;
 function requestLoad(load) {
   var startTime = new Date();
+
   $.get('/load/' + load, function(data, textStatus) {
     var curReqTime = (new Date() - startTime) / load;
     if (!requestTime) requestTime = curReqTime;
