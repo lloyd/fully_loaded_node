@@ -50,8 +50,9 @@ function updateLatency(t) {
 var requestTime = 0;
 function requestLoad(load) {
   var startTime = new Date();
-
-  $.get('/load/' + load, function(data, textStatus) {
+  var alphabet = "abcdefhijklmnopqrstuvwxyzABCDEFHIJKLMNOPQRSTUVWXYZ";
+  var random = '?' + alphabet[Math.floor((Math.random()*alphabet.length))];
+  $.get('/load/' + load + random, function(data, textStatus) {
     var curReqTime = (new Date() - startTime) / load;
     if (!requestTime) requestTime = curReqTime;
     else requestTime = (requestTime * 9 + curReqTime) / 10;
