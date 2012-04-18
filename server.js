@@ -23,7 +23,7 @@ app.get('/load/:work?', function(req, res) {
   var work = parseInt(req.params.work, 10) || 1;
   var workDone = 0;
   for (var i = 0; i < work; i++) doOneWorks(function() {
-    if (++workDone === work) res.send("okie dokie");
+    if (++workDone === work) res.send("0");
   });
 });
 
