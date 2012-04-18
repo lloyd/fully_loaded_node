@@ -68,9 +68,9 @@ function requestLoad(load) {
 }
 
 function runLoad() {
-  // how much load should we run?  cores * 10 / 4
-  var load = Math.round(parseInt($("#numcores").text(), 10) * 10 / 8);
-  for (var i = 0; i < 8; i++) requestLoad(load);
+  // how much load should we run?
+  var load = Math.round(parseInt($("#numcores").text(), 10) * 20 / 6);
+  for (var i = 0; i < 6; i++) requestLoad(load);
 }
 
 $(document).ready(function() {
