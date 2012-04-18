@@ -6,8 +6,7 @@
   "dependencies": {
     "socket.io": "0.9.5",
     "express": "2.5.9",
-    "bcrypt": "0.5.0",
-    "compute-cluster": "0.0.6"
+    "bcrypt": "0.5.0"
   },
   "devDependencies": {
     "awsbox": "*"
