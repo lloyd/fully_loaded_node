@@ -37,9 +37,10 @@ function updateDisplay(state) {
   $("#usage").text(state.usage + "%");
   $("#throughput").text(state.throughput + "rps");
   $("#processors").empty();
+  $("#errors").text(errors);
+  errors = 0;
   state.cpus.forEach(addProc);
 }
-
 
 var lastMsg;
 var latency = 0;
@@ -53,16 +54,21 @@ function updateLatency(t) {
   $('#latency').text(latency + "ms");
 }
 
+var errors = 0;
 var requestTime = 0;
 function requestLoad(load) {
   var startTime = new Date();
   var alphabet = "abcdefhijklmnopqrstuvwxyzABCDEFHIJKLMNOPQRSTUVWXYZ";
   var random = '?' + alphabet[Math.floor((Math.random()*alphabet.length))];
   $.get('/load/' + load + random, function(data, textStatus) {
-    var curReqTime = (new Date() - startTime) / load;
-    if (!requestTime) requestTime = curReqTime;
-    else requestTime = (requestTime * 9 + curReqTime) / 10;
-    $("#wait").text(requestTime.toFixed(0) + "ms");
+    var workCompleted = load - parseInt(data, 10);
+    if (workCompleted) {
+      errors += parseInt(data, 10);
+      var curReqTime = (new Date() - startTime) / workCompleted;
+      if (!requestTime) requestTime = curReqTime;
+      else requestTime = (requestTime * 9 + curReqTime) / 10;
+      $("#wait").text(requestTime.toFixed(0) + "ms");
+    }
     requestLoad(load);
   });
 }
