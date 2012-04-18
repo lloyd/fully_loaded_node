@@ -8,13 +8,10 @@ app.listen(process.env['PORT'] || 3000);
 
 var workComplete = 0;
 function doOneWorks(cb) {
-  bcrypt.genSalt(12, function(err, salt) {
-    bcrypt.hash("B4c0/\/", salt, function(err, hash) {
-      // Store hash in your password DB.
-      workComplete++;
-      cb();
-    });
-  });
+  var salt = bcrypt.genSaltSync(12);  
+  var hash = bcrypt.hashSync("B4c0/\/", salt);
+  workComplete++;
+  process.nextTick(cb);
 }
 
 app.get('/load/:work?', function(req, res) {
