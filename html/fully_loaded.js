@@ -2,6 +2,12 @@ var socket = io.connect('/');
 socket.on('state', function (data) {
   updateLatency(new Date());
   updateDisplay(data);
+
+  // update the pretty graph
+
+  var lag = parseInt($("#latency").text().replace('ms', ''), 10);
+  var wait = parseInt($("#wait").text().replace('ms', ''), 10);
+  Graph.addSample(lag, data.throughput, isNaN(wait) ? 0 : wait, data.usage);
 });
 
 

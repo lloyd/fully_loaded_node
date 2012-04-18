@@ -8,7 +8,8 @@ var express = require('express'),
 var cc = new ccluster({
   module: __dirname + "/bcrypt-compute.js",
   max_backlog: 100000,
-  max_request_time: 5000
+  max_request_time: 5000,
+  max_processes: os.cpus().length * 2
 });
 
 cc.on('error', function(e) {
