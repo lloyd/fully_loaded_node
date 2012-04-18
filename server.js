@@ -8,7 +8,7 @@ var express = require('express'),
 var cc = new ccluster({
   module: __dirname + "/bcrypt-compute.js",
   max_backlog: 100000,
-  max_request_time: 5000,
+  max_request_time: 2.0,
   max_processes: os.cpus().length * 2
 });
 
@@ -25,9 +25,9 @@ app.listen(process.env['PORT'] || 3000);
 
 var workComplete = 0;
 function doOneWorks(cb) {
-  cc.enqueue({}, function() {
-    workComplete++;
-    cb();
+  cc.enqueue({}, function(err) {
+    if (!err) workComplete++;
+    cb(err);
   });
 }
 
@@ -36,8 +36,10 @@ app.get('/load/:work?', function(req, res) {
   // and this causes one API hit to have the affect of N
   var work = parseInt(req.params.work, 10) || 1;
   var workDone = 0;
-  for (var i = 0; i < work; i++) doOneWorks(function() {
-    if (++workDone === work) res.send("okie dokie");
+  var errors = 0;
+  for (var i = 0; i < work; i++) doOneWorks(function(err) {
+    if (err) { errors++; console.log(err); }
+    if (++workDone === work) res.send(errors.toString());
   });
 });
 
