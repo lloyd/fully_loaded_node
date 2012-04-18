@@ -2,16 +2,33 @@ var express = require('express'),
         app = express.createServer(),
          io = require('socket.io').listen(app),
          os = require('os'),
-     bcrypt = require('bcrypt');
+     bcrypt = require('bcrypt'),
+   ccluster = require('compute-cluster');
+
+var cc = new ccluster({
+  module: __dirname + "/bcrypt-compute.js",
+  max_backlog: 100000,
+  max_request_time: 5000,
+  max_processes: os.cpus().length * 2
+});
+
+cc.on('error', function(e) {
+  console.log("error detected in bcrypt computation process!  fatal: " + e.toString());
+  setTimeout(function() { process.exit(1); }, 0);
+}).on('info', function(msg) {
+  console.log("(compute cluster): " + msg);
+}).on('debug', function(msg) {
+  console.log("(compute cluster): " + msg);
+});
 
 app.listen(process.env['PORT'] || 3000);
 
 var workComplete = 0;
 function doOneWorks(cb) {
-  var salt = bcrypt.genSaltSync(12);  
-  var hash = bcrypt.hashSync("B4c0/\/", salt);
-  workComplete++;
-  process.nextTick(cb);
+  cc.enqueue({}, function() {
+    workComplete++;
+    cb();
+  });
 }
 
 app.get('/load/:work?', function(req, res) {

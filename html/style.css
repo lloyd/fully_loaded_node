@@ -4,10 +4,10 @@ body {
     font-family: Unkempt;
     width: 900px;
     margin: auto;
+    text-align: center;
 }
 
 div.title {
-    text-align: center;
     margin: .5em 0 1em 0;
     font-size: 2em;
 }
@@ -47,7 +47,6 @@ div#procsum span:nth-child(2) {
 
 #load_my_node {
     font-size: .8em;
-    text-align: center;
     margin: 2em;
 }
 
@@ -76,4 +75,45 @@ button:active {
 
 button[disabled] {
     opacity: .2;
+}
+
+svg path  {
+    stroke: steelblue;
+    stroke-width: 1;
+    fill: none;
+}
+
+svg text {
+    stroke: steelblue;
+    opacity: .7;
+}
+
+svg path:nth-of-type(2), svg text:nth-of-type(2) {
+    stroke: red;
+}
+
+svg path:nth-of-type(3), svg text:nth-of-type(3) {
+    stroke: yellow;
+}
+
+svg path:nth-of-type(4), svg text:nth-of-type(4) {
+    stroke: green;
+}
+
+svg line {
+    stroke: black;
+}
+
+svg text {
+    font-family: Arial;
+    font-size: 9pt;
+}
+
+svg {
+    border: 10px solid grey;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    margin: auto;
 }
