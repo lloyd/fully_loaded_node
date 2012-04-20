@@ -2,7 +2,17 @@ var express = require('express'),
         app = express.createServer(),
          io = require('socket.io').listen(app),
          os = require('os'),
-     bcrypt = require('bcrypt');
+     bcrypt = require('bcrypt'),
+    cluster = require('cluster');
+
+if (cluster.isMaster) {
+  for (var i = 0; i < ((os.cpus().length / 4.0) + 1); i++) 
+    cluster.fork();
+
+  cluster.on('death', function(worker) {
+    console.log('worker ' + worker.pid + ' died');
+  });
+} else {
 
 app.listen(process.env['PORT'] || 3000);
 
@@ -102,3 +112,4 @@ setInterval(function() {
   last = cur;
 }, 700);
 
+}
