@@ -19,7 +19,6 @@ div.slide {
     margin: .5em auto;
     text-align: center;
     font-size: 1.5em;
-    
 }
 
 div.v {
@@ -30,6 +29,7 @@ div.v {
     font-size: .7em;
     width: 5em;
     text-align: center;
+    color: #E3CEAB;
 }
 
 li {
