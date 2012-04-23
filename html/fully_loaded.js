@@ -38,6 +38,7 @@ function updateDisplay(state) {
   $("#throughput").text(state.throughput + "rps");
   $("#processors").empty();
   $("#errors").text(errors);
+  $("#clients").text(state.clients);
   errors = 0;
   state.cpus.forEach(addProc);
 }

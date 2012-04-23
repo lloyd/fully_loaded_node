@@ -82,7 +82,8 @@ setInterval(function() {
     cpus: [], // per-cpu stats about usage
     usage: 0, // total % of avail compute in use
     load: os.loadavg().map(function(x) { return x.toFixed(3); }), // load averages
-    throughput: throughput
+    throughput: throughput,
+    clients: clients.length
   };
 
   // now let's massage the output of os.cpus() into something nicer to deal

@@ -13,7 +13,7 @@ div.title {
 }
 
 div#processors .proc {
-    font-family: PT Mono;
+    font-family: PT Mono, courier;
     white-space: pre;
     font-size: 10px;
 }
@@ -34,7 +34,7 @@ div#procsum {
 }
 
 div#procsum span:nth-child(2) {
-    font-family: PT Mono;
+    font-family: PT Mono, courier;
 }
 
 #metrics {
@@ -116,4 +116,15 @@ svg {
     border-radius: 10px;
     padding: 10px;
     margin: auto;
+}
+
+#clients {
+    position: fixed;
+    right: -10px;
+    background-color: #CC9393;
+    padding: .5em 1em;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    font-size: 1.5em;
 }
