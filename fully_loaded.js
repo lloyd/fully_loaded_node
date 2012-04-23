@@ -17,7 +17,7 @@ $(document).ready(function() {
   showSlide(null);
 
   $('body').click(function() {
-    var nth = window.location.hash.substr(1);
+    var nth = window.location.hash.substr(1) || "1"; 
     incHash();
     showSlide(nth);
   });
