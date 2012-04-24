@@ -1,3 +1,5 @@
+THE CODE IS HERE!  REALLY IT IS!  IT'S IN THE BRANCHES!
+
 (This repository complements the [chat we'll have in philly on april 23rd, 2012](http://node.ph).)
 
 ## Fully Loaded Node
